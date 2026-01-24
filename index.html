@@ -1,0 +1,1382 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Advocates Law Firm - Excellence in Legal Services</title>
+    <link rel="icon" type="image/png" href="assets/logo.png">
+    <link rel="shortcut icon" type="image/png" href="assets/logo.png">
+    <link rel="apple-touch-icon" href="assets/logo.png">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: #f8f9fa;
+        }
+
+        /* Header & Navigation */
+        .top-header {
+            background: #0b3c78;
+            color: white;
+            padding: 10px 0;
+            text-align: center;
+        }
+
+        .top-header .logo-container {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 15px;
+            padding: 15px 0;
+        }
+
+        .logo {
+            max-height: 80px;
+            width: auto;
+        }
+
+        .firm-name {
+            font-size: 32px;
+            font-weight: bold;
+            letter-spacing: 1px;
+        }
+
+        nav {
+            background: #114a9f;
+            padding: 0;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .nav-item {
+            position: relative;
+        }
+
+        .nav-link {
+            display: block;
+            color: white;
+            padding: 15px 20px;
+            text-decoration: none;
+            transition: background 0.3s;
+            font-size: 15px;
+        }
+
+        .nav-link:hover {
+            background: #1e6bd6;
+        }
+
+        .dropdown {
+            position: absolute;
+            top: 100%;
+            left: 0;
+            background: white;
+            min-width: 200px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+            display: none;
+            z-index: 1001;
+        }
+
+        .nav-item:hover .dropdown {
+            display: block;
+        }
+
+        .dropdown a {
+            display: block;
+            padding: 12px 20px;
+            color: #333;
+            text-decoration: none;
+            transition: background 0.3s;
+        }
+
+        .dropdown a:hover {
+            background: #f0f0f0;
+            color: #0b3c78;
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, #0b3c78 0%, #114a9f 100%);
+            color: white;
+            padding: 80px 20px;
+            text-align: center;
+        }
+
+        .hero h1 {
+            font-size: 48px;
+            margin-bottom: 20px;
+            animation: fadeInUp 0.8s ease-out;
+        }
+
+        .hero p {
+            font-size: 20px;
+            max-width: 800px;
+            margin: 0 auto;
+            animation: fadeInUp 0.8s ease-out 0.2s both;
+        }
+
+        /* Quote Section */
+        .quotes-section {
+            background: white;
+            padding: 60px 20px;
+        }
+
+        .quotes-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+        }
+
+        .quote-card {
+            background: #f8f9fa;
+            padding: 30px;
+            border-left: 4px solid #0b3c78;
+            border-radius: 5px;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .quote-card:hover {
+            transform: translateY(-8px) scale(1.02);
+            box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+        }
+
+        .quote-card blockquote {
+            font-style: italic;
+            font-size: 16px;
+            color: #555;
+            margin-bottom: 15px;
+        }
+
+        /* Main Content */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 60px 20px;
+        }
+
+        .section-title {
+            font-size: 36px;
+            color: #0b3c78;
+            margin-bottom: 40px;
+            text-align: center;
+            position: relative;
+            padding-bottom: 15px;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 3px;
+            background: #0b3c78;
+        }
+
+        /* About Section */
+        .about-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+            align-items: center;
+            margin-top: 40px;
+        }
+
+        .about-text {
+            font-size: 18px;
+            line-height: 1.8;
+            color: #555;
+        }
+
+        .about-image {
+            width: 100%;
+            height: 400px;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.15);
+        }
+
+        .about-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.3s ease;
+        }
+
+        .about-image:hover img {
+            transform: scale(1.05);
+        }
+
+        /* Services Section */
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+        }
+
+        .service-card {
+            background: white;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .service-card:hover {
+            transform: translateY(-8px) scale(1.02);
+            box-shadow: 0 8px 25px rgba(0,0,0,0.2);
+        }
+
+        .service-card h3 {
+            color: #0b3c78;
+            font-size: 24px;
+            margin-bottom: 15px;
+        }
+
+        .service-card p {
+            color: #666;
+            line-height: 1.7;
+            margin-bottom: 15px;
+        }
+
+        .read-more {
+            color: #0b3c78;
+            text-decoration: none;
+            font-weight: bold;
+            display: inline-block;
+            margin-top: 10px;
+        }
+
+        .read-more:hover {
+            text-decoration: underline;
+        }
+
+        /* Service Detail Pages */
+        .service-detail {
+            display: none;
+            padding: 60px 20px;
+            background: white;
+            margin-top: 40px;
+        }
+
+        .service-detail.active {
+            display: block;
+            animation: fadeInUp 0.6s ease-out;
+        }
+
+        .service-detail-content {
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .service-detail h2 {
+            color: #0b3c78;
+            font-size: 36px;
+            margin-bottom: 20px;
+            padding-bottom: 15px;
+            border-bottom: 3px solid #0b3c78;
+        }
+
+        .service-detail h3 {
+            color: #0b3c78;
+            font-size: 24px;
+            margin-top: 30px;
+            margin-bottom: 15px;
+        }
+
+        .service-detail p {
+            color: #555;
+            line-height: 1.8;
+            margin-bottom: 20px;
+            font-size: 16px;
+        }
+
+        .service-detail ul {
+            color: #555;
+            line-height: 1.8;
+            margin-bottom: 20px;
+            padding-left: 30px;
+        }
+
+        .service-detail ul li {
+            margin-bottom: 10px;
+        }
+
+        .back-to-services {
+            display: inline-block;
+            margin-bottom: 30px;
+            color: #0b3c78;
+            text-decoration: none;
+            font-weight: bold;
+            padding: 10px 20px;
+            border: 2px solid #0b3c78;
+            border-radius: 5px;
+            transition: all 0.3s;
+        }
+
+        .back-to-services:hover {
+            background: #0b3c78;
+            color: white;
+        }
+
+        /* Blog Section */
+        .blog-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+        }
+
+        .blog-card {
+            background: white;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            transition: transform 0.3s;
+        }
+
+        .blog-card:hover {
+            transform: translateY(-8px) scale(1.02);
+            box-shadow: 0 8px 25px rgba(0,0,0,0.2);
+        }
+
+        .blog-image {
+            width: 100%;
+            height: 200px;
+            background: linear-gradient(135deg, #0b3c78 0%, #114a9f 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+        }
+
+        .blog-content {
+            padding: 20px;
+        }
+
+        .blog-date {
+            color: #999;
+            font-size: 14px;
+            margin-bottom: 10px;
+        }
+
+        .blog-title {
+            color: #0b3c78;
+            font-size: 20px;
+            margin-bottom: 10px;
+        }
+
+        .blog-excerpt {
+            color: #666;
+            line-height: 1.6;
+        }
+
+        /* Contact Section */
+        .contact-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+        }
+
+        .office-card {
+            background: white;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .office-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 5px 20px rgba(0,0,0,0.15);
+        }
+
+        .office-card h3 {
+            color: #0b3c78;
+            margin-bottom: 15px;
+            font-size: 22px;
+        }
+
+        .office-card p {
+            color: #666;
+            margin-bottom: 8px;
+            line-height: 1.8;
+        }
+
+        .office-card a {
+            color: #0b3c78;
+            text-decoration: none;
+        }
+
+        .office-card a:hover {
+            text-decoration: underline;
+        }
+
+        .map-container {
+            width: 100%;
+            height: 250px;
+            margin-top: 20px;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        }
+
+        .map-container iframe {
+            width: 100%;
+            height: 100%;
+            border: 0;
+        }
+
+        /* Footer */
+        footer {
+            background: #0b3c78;
+            color: white;
+            padding: 50px 20px 20px;
+        }
+
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+            margin-bottom: 30px;
+        }
+
+        .footer-section h3 {
+            margin-bottom: 20px;
+            font-size: 20px;
+        }
+
+        .footer-section ul {
+            list-style: none;
+        }
+
+        .footer-section ul li {
+            margin-bottom: 10px;
+        }
+
+        .footer-section a {
+            color: #ccc;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .footer-section a:hover {
+            color: white;
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 20px;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            color: #ccc;
+        }
+
+        /* Disclaimer */
+        .disclaimer {
+            background: #f8f9fa;
+            padding: 20px;
+            text-align: center;
+            font-size: 12px;
+            color: #666;
+            border-top: 1px solid #ddd;
+        }
+
+        /* Scroll Animation Classes */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+        }
+
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .fade-in-left {
+            opacity: 0;
+            transform: translateX(-50px);
+            transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+        }
+
+        .fade-in-left.visible {
+            opacity: 1;
+            transform: translateX(0);
+        }
+
+        .fade-in-right {
+            opacity: 0;
+            transform: translateX(50px);
+            transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+        }
+
+        .fade-in-right.visible {
+            opacity: 1;
+            transform: translateX(0);
+        }
+
+        .scale-in {
+            opacity: 0;
+            transform: scale(0.9);
+            transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+        }
+
+        .scale-in.visible {
+            opacity: 1;
+            transform: scale(1);
+        }
+
+        /* Staggered Animation Delays */
+        .quote-card:nth-child(1) { transition-delay: 0.1s; }
+        .quote-card:nth-child(2) { transition-delay: 0.2s; }
+        .quote-card:nth-child(3) { transition-delay: 0.3s; }
+
+        .service-card:nth-child(1) { transition-delay: 0.1s; }
+        .service-card:nth-child(2) { transition-delay: 0.2s; }
+        .service-card:nth-child(3) { transition-delay: 0.3s; }
+        .service-card:nth-child(4) { transition-delay: 0.4s; }
+        .service-card:nth-child(5) { transition-delay: 0.5s; }
+        .service-card:nth-child(6) { transition-delay: 0.6s; }
+        .service-card:nth-child(7) { transition-delay: 0.7s; }
+        .service-card:nth-child(8) { transition-delay: 0.8s; }
+        .service-card:nth-child(9) { transition-delay: 0.9s; }
+
+        .blog-card:nth-child(1) { transition-delay: 0.1s; }
+        .blog-card:nth-child(2) { transition-delay: 0.2s; }
+        .blog-card:nth-child(3) { transition-delay: 0.3s; }
+
+        .office-card:nth-child(1) { transition-delay: 0.1s; }
+        .office-card:nth-child(2) { transition-delay: 0.2s; }
+
+        /* Enhanced Hover Effects */
+        .quote-card {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.6s ease-out, transform 0.6s ease-out, box-shadow 0.3s;
+        }
+
+        .quote-card.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .service-card {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.6s ease-out, transform 0.6s ease-out, box-shadow 0.3s;
+        }
+
+        .service-card.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .blog-card {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+        }
+
+        .blog-card.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .office-card {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+        }
+
+        .office-card.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Logo Animation */
+        .logo {
+            animation: logoFadeIn 1s ease-out;
+        }
+
+        .firm-name {
+            animation: fadeInRight 1s ease-out 0.3s both;
+        }
+
+        /* Navigation Animations */
+        .dropdown {
+            animation: slideDown 0.3s ease-out;
+        }
+
+        .nav-link {
+            position: relative;
+        }
+
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            width: 0;
+            height: 2px;
+            background: white;
+            transition: width 0.3s ease, left 0.3s ease;
+        }
+
+        .nav-link:hover::after {
+            width: 80%;
+            left: 10%;
+        }
+
+        /* Section Title Animation */
+        .section-title {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+        }
+
+        .section-title.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .section-title::after {
+            width: 0;
+            transition: width 0.8s ease-out 0.3s;
+        }
+
+        .section-title.visible::after {
+            width: 80px;
+        }
+
+        /* Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeInRight {
+            from {
+                opacity: 0;
+                transform: translateX(-20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        @keyframes logoFadeIn {
+            from {
+                opacity: 0;
+                transform: scale(0.8);
+            }
+            to {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+
+        @keyframes slideDown {
+            from {
+                opacity: 0;
+                transform: translateY(-10px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes pulse {
+            0%, 100% {
+                transform: scale(1);
+            }
+            50% {
+                transform: scale(1.05);
+            }
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .about-content {
+                grid-template-columns: 1fr;
+            }
+
+            .hero h1 {
+                font-size: 32px;
+            }
+
+            .firm-name {
+                font-size: 24px;
+            }
+
+            .nav-container {
+                flex-direction: column;
+            }
+
+            .dropdown {
+                position: static;
+                display: none;
+                width: 100%;
+            }
+
+            .nav-item:hover .dropdown {
+                display: block;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Top Header -->
+    <div class="top-header">
+        <div class="logo-container">
+            <img src="assets/logo.png" alt="Advocates Law Firm Logo" class="logo">
+            <div class="firm-name">Advocates Law Firm</div>
+        </div>
+    </div>
+
+    <!-- Navigation -->
+    <nav>
+        <div class="nav-container">
+            <div class="nav-item">
+                <a href="#home" class="nav-link">Home</a>
+            </div>
+            <div class="nav-item">
+                <a href="#about" class="nav-link">About Us</a>
+                <div class="dropdown">
+                    <a href="#firm-history">Firm History</a>
+                    <a href="#our-approach">Our Approach</a>
+                    <a href="#our-team">Our Team</a>
+                    <a href="#photo-gallery">Photo Gallery</a>
+                </div>
+            </div>
+            <div class="nav-item">
+                <a href="#services" class="nav-link">Services</a>
+                <div class="dropdown">
+                    <a href="#criminal-law">Criminal Law</a>
+                    <a href="#corporate-law">Corporate Law</a>
+                    <a href="#family-law">Family Law</a>
+                    <a href="#property-law">Property Law</a>
+                    <a href="#intellectual-property">Intellectual Property</a>
+                    <a href="#real-estate">Real Estate</a>
+                    <a href="#commercial-law">Commercial Law</a>
+                    <a href="#insolvency">Insolvency & Restructuring</a>
+                    <a href="#inheritance-law">Inheritance Law</a>
+                </div>
+            </div>
+            <div class="nav-item">
+                <a href="#career" class="nav-link">Career</a>
+            </div>
+            <div class="nav-item">
+                <a href="#blog" class="nav-link">Blog</a>
+            </div>
+            <div class="nav-item">
+                <a href="#contact" class="nav-link">Contact</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <h1>Excellence in Legal Advocacy</h1>
+        <p>An established law firm, with outstanding performance & catering to clients' needs since generations</p>
+    </section>
+
+    <!-- Quotes Section -->
+    <section class="quotes-section">
+        <div class="quotes-container">
+            <div class="quote-card">
+                <blockquote>Our quest for excellence encompasses a deeper understanding of the board contours as well as minute detailing of our client's problems and solution that we suggest.</blockquote>
+            </div>
+            <div class="quote-card">
+                <blockquote>Good Legal representation comes from exhaustive research, procedural competence & perspective with the objective of protecting the immediate & continuing interests of the client.</blockquote>
+            </div>
+            <div class="quote-card">
+                <blockquote>Our convictions of rendering honest and proficient services are based on sound business ethics, skills & professionalism of our team.</blockquote>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="container">
+        <h2 class="section-title">About Advocates Law Firm</h2>
+        <div class="about-content">
+            <div class="about-text fade-in-left">
+                <p>Advocates Law Firm has maintained an unfathomable proficiency in its full-time service to its clients. It fosters a dynamic set of advocates, who take initiative individually as well as a team to work and provide the best viable solution to the plethora of legal problems of the client.</p>
+                <p>Excellency and efficiency are delivered throughout with time and cost management. The team tasked works with rapt attention and undeterred focus to provide quality results to clients by researching in depth, all aspects of law to come up with the most creative solutions.</p>
+                <p>Our firm represents a legacy of disciplined legal practice and sound judgment. We advise and represent clients in complex legal matters with thorough preparation, ethical rigor, and deep respect for judicial institutions.</p>
+            </div>
+            <div class="about-image fade-in-right">
+                <img src="assets/about-image.png" alt="Advocates Law Firm - Professional Legal Services">
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section id="services" class="container" style="background: #f8f9fa; padding: 60px 20px; margin: 0;">
+        <h2 class="section-title">Our Services</h2>
+        <p style="text-align: center; max-width: 800px; margin: 0 auto 40px; font-size: 18px; color: #666;">
+            We provide world-class reliable and practical legal services and solutions to the various legal issues for our clients, with expertise from a robust team of advocates, experienced in diverse legal areas, leaving significant footprint in the legal horizon, across the country.
+        </p>
+
+        <div class="services-grid">
+            <div class="service-card">
+                <h3>Trademark & I. P. Law</h3>
+                <p>In an aggressive competitive structure, Intellectual Property Rights acts as a stimulant in building good will and mark in the market despite of being an intangible asset. Intellectual property laws promote the creation of human ideas/intellect.</p>
+                <a href="#intellectual-property" class="read-more">Read More →</a>
+            </div>
+
+            <div class="service-card">
+                <h3>Real Estate</h3>
+                <p>Real Estate laws are concerned with the buying and selling of real estate properties. We have been advising and representing clients in various RERA Disputes on Land Acquisition, selling and purchasing, lease and taxation.</p>
+                <a href="#real-estate" class="read-more">Read More →</a>
+            </div>
+
+            <div class="service-card">
+                <h3>Restructuring & Insolvency</h3>
+                <p>Matters relating restructuring and insolvency are regulated by Insolvency and bankruptcy code, 2016. The code is a watch dog for insolvency and liquidation process and proceedings involving all limited liability entities.</p>
+                <a href="#insolvency" class="read-more">Read More →</a>
+            </div>
+
+            <div class="service-card">
+                <h3>Property Law</h3>
+                <p>Transfer of property is a wide branch of law prevailing since nineteenth century and in India is regulated by transfer of property act, 1882. We have expertise in advising clients robustly in matters related property disputes.</p>
+                <a href="#property-law" class="read-more">Read More →</a>
+            </div>
+
+            <div class="service-card">
+                <h3>Matrimonial Laws</h3>
+                <p>Marriage is a sacred ceremony, a bond tying not only the pair but the entire family. We provide consultancy and assistance to clients in matters related to divorce, child custody, child support, spousal support, and paternity actions.</p>
+                <a href="#family-law" class="read-more">Read More →</a>
+            </div>
+
+            <div class="service-card">
+                <h3>Family Law / Law of Inheritance</h3>
+                <p>Law of Inheritance deals with Intestate Succession, Testamentary Succession and Partition. The Firm provides complete legal assistance in relation to drafting of Wills, deeds and other legal instruments.</p>
+                <a href="#inheritance-law" class="read-more">Read More →</a>
+            </div>
+
+            <div class="service-card">
+                <h3>Criminal Law</h3>
+                <p>Criminal law covers all the proceedings before Executive and Judicial Magistrates in relation to law and order, and trials for all kind of offences punishable under Penal Laws. Regular Bail, Anticipatory Bail, Appeal, Quashing Petition comes under the purview.</p>
+                <a href="#criminal-law" class="read-more">Read More →</a>
+            </div>
+
+            <div class="service-card">
+                <h3>Company Law</h3>
+                <p>Companies Act, 2013 regulates the companies/ corporations formed under it. The Firm advises and drafts the Policies, Memorandum of Articles, Contracts and any legal instrument in relation to the functioning and working of Board of Directors.</p>
+                <a href="#corporate-law" class="read-more">Read More →</a>
+            </div>
+
+            <div class="service-card">
+                <h3>Commercial Law</h3>
+                <p>Commercial Law is a vast and dynamic field. The Commercial Courts Act, 2015 enumerates 21 kinds of transactions out of which the commercial dispute may arise. The Firm has a team of Advocates having experience in dealing with Commercial disputes.</p>
+                <a href="#commercial-law" class="read-more">Read More →</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Service Detail Sections -->
+    <!-- Intellectual Property Law -->
+    <section id="intellectual-property" class="service-detail">
+        <div class="service-detail-content">
+            <a href="#services" class="back-to-services">← Back to Services</a>
+            <h2>Trademark & Intellectual Property Law</h2>
+            <p>In an aggressive competitive structure, Intellectual Property Rights acts as a stimulant in building good will and mark in the market despite of being an intangible asset. Intellectual property laws promote the creation of human ideas/intellect. Intellectual property has become a backbone for being a distinct identity amid other national and international players. The TRIPS Agreement established the minimum global standards of IPRs protection as well as rules on enforcement, not ending to this it has brought along domestic IPRs regimes of WTO members under the jurisdiction of the WTO dispute settlement system.</p>
+            
+            <h3>Copyright Protection</h3>
+            <p>Copyright under IPR protects written and published works such as books, songs, artistic work, films, and web content. Our attorneys provide a comprehensive host of advisory services to their clients including:</p>
+            <ul>
+                <li>Filing and prosecuting applications for registration of Copyright in India and internationally</li>
+                <li>Infringement and validity advice</li>
+                <li>Litigation: Cancellation proceedings, appeals, civil suits and criminal actions for infringement</li>
+                <li>Anti-piracy measures</li>
+                <li>Post Registration Services</li>
+                <li>Assignment, licensing and transfer</li>
+                <li>Specific agreements and contract drafting</li>
+            </ul>
+
+            <h3>Trademark Services</h3>
+            <p>Trademark under IPR protects sign, symbols, and logos, device that distinguish products and services of one from its competitors. Our experts at Advocates Law Firm provide comprehensive advisory on trademark related dispute matters:</p>
+            <ul>
+                <li>Filing and prosecuting Trade Mark and Service Mark applications at the Indian Trademarks Registry</li>
+                <li>Filing and prosecuting Trade Mark and Service Mark applications internationally with the cooperation of our foreign associates or under the Madrid Protocol</li>
+                <li>Infringement and validity opinion</li>
+                <li>Litigation: opposition, revocation, rectification, appeals, criminal and civil suits for infringement and passing off</li>
+                <li>Anti-counterfeit action</li>
+                <li>Appellate Board proceedings</li>
+                <li>Trademark searches locally and internationally</li>
+                <li>Clearance of title, Domain Name Search, Brand selection advice</li>
+                <li>Journal watch services</li>
+                <li>Post-registration services, Renewals, Portfolio Management</li>
+                <li>Assignment, Licensing and Franchising</li>
+            </ul>
+
+            <h3>Patent Services</h3>
+            <p>Patents under IPR protects human intellect and inventions. Our attorneys offer a wide array of services and solutions in patent filing and prosecution, dispute resolution and litigation in patent related matters:</p>
+            <ul>
+                <li>Drafting provisional & complete patent specifications for India and overseas</li>
+                <li>Filing and prosecuting applications at the Indian Patent Office and under the PCT</li>
+                <li>Filing and prosecuting applications internationally in co-operation with our foreign associates</li>
+                <li>Comprehensive patent searching with analysis & legal opinion for: Prior art, Novelty, Patentability, Freedom to operate / practice (FTO), Invalidation</li>
+                <li>Litigation support, Patent Litigation, Oppositions, Pre grant & post grant</li>
+                <li>Observation submissions, Infringement actions (Prosecution & Defence)</li>
+                <li>Appeals (at the IPAB and in various Courts)</li>
+                <li>Journal watch services, Post registration services such as renewals and filing statement of working</li>
+                <li>Licensing and transfer of technology, Portfolio Management</li>
+            </ul>
+
+            <h3>Design Registration</h3>
+            <p>Our firm provides comprehensive design protection services including:</p>
+            <ul>
+                <li>Filing and prosecuting applications for registration of Designs</li>
+                <li>Searches locally and internationally</li>
+                <li>Infringement and validity opinions</li>
+                <li>Litigation: cancellation proceedings, appeals, civil suits for infringement</li>
+                <li>Journal watch services</li>
+                <li>Post Registration Services, Renewals</li>
+                <li>Assignment and Licensing, Portfolio Management</li>
+            </ul>
+        </div>
+    </section>
+
+    <!-- Real Estate Law -->
+    <section id="real-estate" class="service-detail">
+        <div class="service-detail-content">
+            <a href="#services" class="back-to-services">← Back to Services</a>
+            <h2>Real Estate Law</h2>
+            <p>Real Estate laws are concerned with the buying and selling of real estate properties. The Acts containing legal provisions is Real Estate (Regulation and Development) Act, 2016. Each state has its laws governing development, marketing and selling of real estate properties.</p>
+            
+            <p>Advocates Law Firm have been advising and representing its clients in various RERA Disputes on Land Acquisition, selling and purchasing, lease and taxation. Our firm's experience and services include advising, structuring and preparing drafts and documents including keeping in compliance with requisite stamp duty, registration process, and other approvals from statutory Bodies.</p>
+
+            <h3>Our Real Estate Services Include:</h3>
+            <ul>
+                <li><strong>RERA Compliance:</strong> The firm represents clients in litigation filed against government bodies such as DDA, M.C.D, L&DO before various legal forums, in wide range of matters relating to land misuse disputes, land acquisition proceedings, sale of property, leasing matters, house tax issues, and municipal rules and byelaws.</li>
+                <li><strong>Joint Venture Development:</strong> Advising on Joint Venture Development agreements and structuring</li>
+                <li><strong>Township Development:</strong> Comprehensive legal support for development of townships and large-scale projects</li>
+                <li><strong>Real Estate Development and Promotion:</strong> Legal documentation and advisory for development and promotion of Real Estate projects</li>
+                <li><strong>Documentation Services:</strong> Drafting of Lease and sale Documentation, legal documentation and advise on Sale/Purchase/Lease of Property</li>
+                <li><strong>Dispute Resolution:</strong> Landlord and Tenant Disputes, Land Use Regulation matters</li>
+                <li><strong>Financial Transactions:</strong> Mortgage and Finance Agreements, Building, Development and Construction Contracts</li>
+                <li><strong>Tax Matters:</strong> House Tax Disputes resolution and advisory</li>
+                <li><strong>Commercial Transactions:</strong> Projects and Retail Property Transactions</li>
+            </ul>
+
+            <h3>Why Choose Our Real Estate Legal Services?</h3>
+            <p>Our team of experienced real estate attorneys understands the complexities of property transactions in India. We provide end-to-end legal support from due diligence to closing, ensuring that all transactions comply with local, state, and national regulations. We have successfully represented clients in high-stakes RERA disputes and have a proven track record of protecting client interests in complex real estate matters.</p>
+        </div>
+    </section>
+
+    <!-- Restructuring & Insolvency -->
+    <section id="insolvency" class="service-detail">
+        <div class="service-detail-content">
+            <a href="#services" class="back-to-services">← Back to Services</a>
+            <h2>Restructuring & Insolvency</h2>
+            <p>Matters relating restructuring and insolvency are regulated by Insolvency and bankruptcy code, 2016. The code is a watch dog for insolvency and liquidation process and proceedings involving all limited liability entities. Not limited to this the code governs insolvency and bankruptcy proceedings for individuals, partnerships as well. The government has set up a committee for recommendations for the adoption of UNICITRAL Model Law on Cross-Border Insolvency, 1997. Tribunals and authorities handling Insolvency and liquidation proceedings are National Company Law Tribunal (NCLT) National Company Law Appellate Tribunal (NCLAT).</p>
+
+            <p>The strong expertise in core commercial and corporate laws, coupled with the understanding of various business sectors enables the firm to deliver holistic and effective guidance to the Clients.</p>
+
+            <h3>Our Insolvency & Restructuring Services:</h3>
+            <ul>
+                <li><strong>Legal & Commercial Advisory:</strong> Our firm expertise cover legal as well as commercial advice in the matters relating insolvency, settlements and restructuring, negotiations</li>
+                <li><strong>Representation Before Tribunals:</strong> We represent our clients before NCLT, NCLAT, High Courts and Supreme Court of India</li>
+                <li><strong>Creditor Services:</strong> Specifically, the team has rendered advisory and consultancy services to creditors on various potential issues that could arise as a result of an interplay between the Code and other applicable laws</li>
+                <li><strong>Insolvency Resolution Process:</strong> The team has also initiated insolvency resolution process and sought relief before the NCLT on behalf of various Clients</li>
+                <li><strong>Strategic Support:</strong> The team supports with a strategic combination of advisory and litigation throughout the course of the insolvency proceedings to our Clients in order to safeguard their financial interests</li>
+                <li><strong>Asset Reconstruction:</strong> The team is also well-positioned to deliver strategic advice to asset reconstruction companies. The team aids and guides in the assessment of assets and liabilities of a stressed company and accordingly advises the risk involved in taking over businesses of stressed companies undergoing resolution process</li>
+            </ul>
+
+            <h3>Our Approach</h3>
+            <p>We understand that insolvency and restructuring matters require not just legal expertise but also deep commercial understanding. Our team works closely with clients to develop comprehensive strategies that protect their interests while navigating the complex regulatory framework. We provide end-to-end support from initial assessment through resolution, ensuring that our clients are well-positioned throughout the process.</p>
+        </div>
+    </section>
+
+    <!-- Property Law -->
+    <section id="property-law" class="service-detail">
+        <div class="service-detail-content">
+            <a href="#services" class="back-to-services">← Back to Services</a>
+            <h2>Property Law (Transfer of Property Act)</h2>
+            <p>Transfer of property is a wide branch of law prevailing since nineteenth century and in India is regulated by transfer of property act, 1882. The act came into force on 1st July 1882 and lays down provisions in context of transfer or property and conditions involving transfers. "Move of property" as per the act signifies and demonstrates by what way the individual passes on the property and comprehensively establishes all the legal rights of a person in property.</p>
+
+            <h3>Our Property Law Services:</h3>
+            <p>Advocates Law Firm have expertise in advising its clients robustly in the matters related property disputes and representing its client before authorities, High court and Supreme Court. We also assist in drafting and preparing legal documents including:</p>
+            <ul>
+                <li><strong>Sale Agreements:</strong> Comprehensive drafting and review of sale agreements ensuring all legal requirements are met</li>
+                <li><strong>Rent/Lease Deeds:</strong> Preparation of lease and rental agreements with proper terms and conditions</li>
+                <li><strong>Mortgage Deeds:</strong> Legal documentation for mortgage transactions</li>
+                <li><strong>Gift Deeds:</strong> Proper documentation for gift transactions</li>
+                <li><strong>Conveyance Deeds:</strong> Complete conveyance documentation for property transfers</li>
+                <li><strong>Property Dispute Resolution:</strong> Representation in property disputes before various courts and authorities</li>
+                <li><strong>Title Verification:</strong> Comprehensive title search and verification services</li>
+                <li><strong>Due Diligence:</strong> Complete legal due diligence for property transactions</li>
+            </ul>
+
+            <h3>Why Our Property Law Services Stand Out</h3>
+            <p>With decades of experience in property law, our team understands the nuances of the Transfer of Property Act, 1882, and related legislation. We ensure that all property transactions are legally sound and protect our clients' interests. Our comprehensive approach covers everything from initial documentation to dispute resolution, providing clients with peace of mind in their property transactions.</p>
+        </div>
+    </section>
+
+    <!-- Family Law / Matrimonial Laws -->
+    <section id="family-law" class="service-detail">
+        <div class="service-detail-content">
+            <a href="#services" class="back-to-services">← Back to Services</a>
+            <h2>Matrimonial Laws & Family Law</h2>
+            <p>"Marriage" a sacred ceremony, a bond tying not only the pair but the entire family, thus itself becomes a law equally important as any other law. India a secular country, with variety of religions and not having a uniform code, Muslim marriages are governed by Muslim Personal Law/ Shariat law whereas Hindu marriages are governed by Hindu Marriage Act, 1955 and similarly Christian Marriage Act, 1872 applies to Christians. In case of Special cases Special Marriage Act, 1954 applies universally to all religions. "Marriage is a contract" "Contracts are meant to be broken" therefore rules and regulations regarding troubled marriages are enshrined under Indian Divorce Act, 1869.</p>
+
+            <h3>Our Family Law Services:</h3>
+            <p>Advocates Law Firm have been providing consultancy and assistance to their clients. We look after understanding and rigorously achieving our client's needs. Advocates Law Firm represent clients in family courts throughout India in matters related to:</p>
+            <ul>
+                <li><strong>Divorce Proceedings:</strong> Comprehensive representation in divorce cases under various personal laws</li>
+                <li><strong>Child Custody:</strong> Aggressive advocacy for child custody matters ensuring the best interests of the child</li>
+                <li><strong>Child Support:</strong> Legal assistance in child support and maintenance matters</li>
+                <li><strong>Spousal Support:</strong> Representation in alimony and spousal maintenance cases</li>
+                <li><strong>Equitable Distribution:</strong> Fair division of marital assets and properties</li>
+                <li><strong>Paternity Actions:</strong> Legal proceedings related to paternity determination</li>
+                <li><strong>Pre-nuptial Agreements:</strong> Drafting and review of pre-nuptial agreements</li>
+                <li><strong>Domestic Violence Cases:</strong> Representation in cases under the Protection of Women from Domestic Violence Act</li>
+            </ul>
+
+            <h3>Our Approach to Family Law</h3>
+            <p>If you are seeking a family/divorce attorney to represent you in a divorce or child custody matter, you need one who will be an aggressive advocate for your interests and a compassionate and understanding legal counselor as you go through this difficult time. At Advocates Law Firm, that is exactly what you will receive. We pride ourselves on our ability to meet the needs of our clients while giving them personal attention and service.</p>
+
+            <p>We understand that family law matters are emotionally charged and require not just legal expertise but also sensitivity and understanding. Our team works closely with clients to navigate these challenging times while ensuring their legal rights are protected.</p>
+        </div>
+    </section>
+
+    <!-- Inheritance Law -->
+    <section id="inheritance-law" class="service-detail">
+        <div class="service-detail-content">
+            <a href="#services" class="back-to-services">← Back to Services</a>
+            <h2>Family Law / Law of Inheritance</h2>
+            <p>Law of Inheritance deals with Intestate Succession, Testamentary Succession and Partition. The laws are primary based on customary principles derived from uncodified personal laws. The Parliament has codified some of them i.e. The Indian Succession Act, 1925, The Hindu Succession Act, 1956, The Partition Act, 1893.</p>
+
+            <h3>Our Inheritance Law Services:</h3>
+            <ul>
+                <li><strong>Will Drafting:</strong> The Firm provides complete legal assistance in relation to drafting of Wills, ensuring that your wishes are properly documented and legally enforceable</li>
+                <li><strong>Succession Planning:</strong> Comprehensive advice on succession planning and estate management</li>
+                <li><strong>Probate Proceedings:</strong> Assistance in obtaining probate and letters of administration</li>
+                <li><strong>Partition Matters:</strong> Legal representation in partition suits and family property disputes</li>
+                <li><strong>Intestate Succession:</strong> Guidance on matters of intestate succession under various personal laws</li>
+                <li><strong>Testamentary Succession:</strong> Legal support for testamentary succession matters</li>
+                <li><strong>Deed Preparation:</strong> Drafting of various deeds and legal instruments related to inheritance</li>
+                <li><strong>Court Representation:</strong> The Firm also drafts the legal documents i.e. Applications, Pleadings and Petition and appears before the Court of Law on behalf of its clients</li>
+            </ul>
+
+            <h3>Understanding Inheritance Laws in India</h3>
+            <p>Inheritance laws in India vary based on religion and personal laws. Our team has extensive experience in handling inheritance matters under Hindu Law, Muslim Law, Christian Law, and other personal laws. We ensure that all inheritance matters are handled with sensitivity while protecting our clients' legal rights and interests.</p>
+        </div>
+    </section>
+
+    <!-- Criminal Law -->
+    <section id="criminal-law" class="service-detail">
+        <div class="service-detail-content">
+            <a href="#services" class="back-to-services">← Back to Services</a>
+            <h2>Criminal Law</h2>
+            <p>Criminal law covers all the proceedings before Executive and Judicial Magistrates in relation to law and order, and trials for all kind of offences punishable under Penal Laws. The trials are conducted before Sessions Judge or Metropolitan Magistrate or Judicial Magistrate of First Class. Regular Bail, Anticipatory Bail, Appeal, Quashing Petition, Special Leave Petition, etc. comes under the purview of Criminal Law.</p>
+
+            <h3>Our Criminal Law Services:</h3>
+            <ul>
+                <li><strong>Bail Applications:</strong> Regular Bail and Anticipatory Bail applications before appropriate courts</li>
+                <li><strong>Criminal Defense:</strong> Comprehensive defense representation in criminal trials before Sessions Courts, Metropolitan Magistrates, and Judicial Magistrates</li>
+                <li><strong>Appeals:</strong> Filing and arguing appeals against convictions and sentences</li>
+                <li><strong>Quashing Petitions:</strong> Filing petitions for quashing of FIRs and criminal proceedings under Section 482 of CrPC</li>
+                <li><strong>Special Leave Petitions:</strong> Filing SLPs before the Supreme Court of India</li>
+                <li><strong>White Collar Crimes:</strong> Defense in cases involving financial crimes, fraud, and corporate offenses</li>
+                <li><strong>Cyber Crimes:</strong> Representation in cases under the Information Technology Act and related cybercrime laws</li>
+                <li><strong>Crimes Against Women:</strong> Specialized representation in cases involving crimes against women</li>
+                <li><strong>Legal Opinions:</strong> The Firm also provides legal opinion and advice in relation to the questions of law</li>
+            </ul>
+
+            <h3>Our Criminal Defense Approach</h3>
+            <p>The Firm on behalf of its clients deals with entire criminal proceedings including appearance, arguments, cross-examination before the Court of Law. We understand that criminal charges can have serious consequences, and we work tirelessly to protect our clients' rights and interests. Our team has extensive experience in handling all types of criminal matters, from minor offenses to serious felonies, ensuring that our clients receive the best possible representation.</p>
+        </div>
+    </section>
+
+    <!-- Corporate Law / Company Law -->
+    <section id="corporate-law" class="service-detail">
+        <div class="service-detail-content">
+            <a href="#services" class="back-to-services">← Back to Services</a>
+            <h2>Company Law & Corporate Law</h2>
+            <p>Companies Act, 1956 & 2013 regulates the companies/ corporations formed under it and these corporations are administered by the Ministry of Corporate Affairs. Company is an independent legal entity incorporated by a group of persons to engage in and operate a business, commercial or industrial. It has to comply time to time with all the directions, regulations and laws issued by the Ministry of Corporate Affairs. National Company Law Tribunal is an adjudicating authority in relation to matters arising out of the provisions of Companies Act. The Orders passed by National Company Law Tribunal are appealable before National Company Law Appellate Tribunal. And the Orders passed by Appellate Tribunal are appealable before the Supreme Court of India.</p>
+
+            <h3>Our Corporate Law Services:</h3>
+            <ul>
+                <li><strong>Corporate Governance:</strong> The Firm advises and drafts the Policies, Memorandum of Articles, Contracts and any legal instrument in relation to the functioning and working of Board of Directors of the Companies in terms of Companies Act, 2013</li>
+                <li><strong>Insolvency & Bankruptcy:</strong> The Firm also provides assistance in relation to the Bankruptcy and Insolvency issues under the Insolvency and Bankruptcy Code, 2016</li>
+                <li><strong>Winding Up:</strong> Legal support for winding up of companies</li>
+                <li><strong>Mergers & Acquisitions:</strong> Amalgamation, Merger or Reconstruction of company matters</li>
+                <li><strong>NCLT Representation:</strong> The Firm also represents/appears on behalf of its clients before the National Company Law Tribunal</li>
+                <li><strong>NCLAT Appeals:</strong> Representation before National Company Law Appellate Tribunal</li>
+                <li><strong>Supreme Court Appeals:</strong> Appeals before the Supreme Court of India in corporate matters</li>
+                <li><strong>Compliance Advisory:</strong> Ongoing compliance advice and support for companies</li>
+                <li><strong>Corporate Restructuring:</strong> Legal support for corporate restructuring and reorganization</li>
+            </ul>
+
+            <h3>Why Choose Our Corporate Law Services</h3>
+            <p>Our corporate law team has extensive experience in handling all aspects of company law under the Companies Act, 2013. We provide comprehensive legal support to companies of all sizes, from startups to large corporations. Our services ensure that companies remain compliant with all regulatory requirements while achieving their business objectives.</p>
+        </div>
+    </section>
+
+    <!-- Commercial Law -->
+    <section id="commercial-law" class="service-detail">
+        <div class="service-detail-content">
+            <a href="#services" class="back-to-services">← Back to Services</a>
+            <h2>Commercial Law</h2>
+            <p>Commercial Law is a vast and dynamic, considering its important, a new legislation was enacted in 2015 with special procedure and independent mechanism to speedily adjudicate the Commercial Disputes of specified value i.e. constitution of Commercial Courts at District Level, Commercial Appellate Courts at District Judge level, Commercial Division and Commercial Appellate Division.</p>
+
+            <p>The Commercial Courts Act, 2015 enumerates 21 kinds of transactions out of which the commercial dispute may arise, it includes those arising out of mercantile documents and transactions, export and import of merchandise, admiralty and maritime law, transactions relating to aircraft, carriage of goods, construction infrastructure contracts, agreements relating to immovable property used exclusive in trade or commerce and those relating to franchising, distribution, licensing, management, consultancy, joint venture, shareholders, subscription and investment pertaining to the services industry, including outsourcing and financial services, partnership agreements, partnership technology developments, intellectual property rights, sale of goods, mercantile agency, mercantile usage, insurance, reinsurance, exploitation of oil and gas reserves and other natural resources, contracts of agency.</p>
+
+            <h3>Our Commercial Law Services:</h3>
+            <ul>
+                <li><strong>Commercial Dispute Resolution:</strong> The Firm has a team of Advocates having experience in dealing with Commercial disputes</li>
+                <li><strong>Litigation Support:</strong> The Firm provides complete litigation assistance to its client including the companies, firms and individuals</li>
+                <li><strong>Legal Advisory:</strong> The Firm advises in relation to all the issues arising out of commercial transactions including complex commercial legal issues</li>
+                <li><strong>Documentation:</strong> The Firm drafts agreements, legal instruments and pleadings for its clients</li>
+                <li><strong>Court Representation:</strong> The Firm also represents/appears on behalf of its clients before the Commercial Courts, the High Courts and the Supreme Court of India</li>
+                <li><strong>Contract Review:</strong> Comprehensive review and drafting of commercial contracts</li>
+                <li><strong>Dispute Prevention:</strong> Proactive legal advice to prevent commercial disputes</li>
+                <li><strong>Arbitration:</strong> Representation in commercial arbitration proceedings</li>
+            </ul>
+
+            <h3>Our Commercial Law Expertise</h3>
+            <p>Commercial law is at the heart of business operations. Our team understands the complexities of commercial transactions and provides practical, business-oriented legal solutions. We work closely with clients to understand their business needs and provide legal support that helps them achieve their commercial objectives while minimizing legal risks.</p>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="container" style="background: #f8f9fa; padding: 60px 20px;">
+        <h2 class="section-title">Need Help? Call our office</h2>        
+        <div class="contact-grid">
+            <div class="office-card">
+                <h3>Head Office</h3>
+                <p><strong>Address:</strong> RAJEEV NAGAR ROAD NO.21, PATNA,  BIHAR – 800024</p>
+                <p><strong>Phone:</strong> +91 7079717223</p>
+                <p><strong>Email:</strong> <a href="mailto:contact@advocateslawfirm.com">contact@advocateslawfirm.com</a></p>
+                <div class="map-container">
+                    <iframe 
+                        src="https://www.google.com/maps?q=RAJEEV+NAGAR+ROAD+NO.21,+PATNA,+BIHAR+800024&output=embed" 
+                        allowfullscreen="" 
+                        loading="lazy" 
+                        referrerpolicy="no-referrer-when-downgrade">
+                    </iframe>
+                </div>
+                <p style="margin-top: 15px;"><a href="https://www.google.com/maps/search/RAJEEV+NAGAR+ROAD+NO.21,+PATNA,+BIHAR+800024" target="_blank">Map & Directions →</a></p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>Advocates Law Firm</h3>
+                <p>Advocates Law Firm is a full service law firm established with the objective of providing comprehensive and sophisticated legal advice and services to its clients, who are a mix of small and large companies including the individual clients engaged in a myriad of complex commercial activities.</p>
+            </div>
+
+            <div class="footer-section">
+                <h3>Extra Links</h3>
+                <ul>
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#services">Services</a></li>
+                    <li><a href="#contact">Contact Us</a></li>
+                    <li><a href="#photo-gallery">Photo Gallery</a></li>
+                    <li><a href="#about">About</a></li>
+                    <li><a href="#our-team">Our Team</a></li>
+                    <li><a href="#career">Career</a></li>
+                    <li><a href="#blog">Blog</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-section">
+                <h3>Services</h3>
+                <ul>
+                    <li><a href="#insurance-law">Insurance Law</a></li>
+                    <li><a href="#contracts">Contracts</a></li>
+                    <li><a href="#environmental-law">Environmental Law</a></li>
+                    <li><a href="#aviation-laws">Aviation Laws</a></li>
+                    <li><a href="#sports-law">Sports Law</a></li>
+                    <li><a href="#company-laws">Company Laws</a></li>
+                    <li><a href="#real-estate">Real Estate</a></li>
+                    <li><a href="#trademark-laws">Trademark Laws</a></li>
+                    <li><a href="#education-laws">Education Laws</a></li>
+                    <li><a href="#more-services">More Services</a></li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="footer-bottom">
+            <p>© Copyright 2026 | Advocates Law Firm | Privacy Policy</p>
+        </div>
+    </footer>
+
+    <!-- Disclaimer -->
+    <div class="disclaimer">
+        <p><strong>Disclaimer:</strong> As per the rules of the Bar Council of India, we are not permitted to solicit work and advertise. By visiting the website, the user acknowledges that the information provided on this website is solely available for informational purposes only sought to be voluntarily gained by him/her and is neither soliciting nor advertisement. Further, the information provided on this website is accessed by the user's own volition, and any transmission, receipt or use of this information available on this website does not create any liability or any relationship with us.</p>
+    </div>
+
+    <script>
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Intersection Observer for scroll animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver(function(entries) {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, observerOptions);
+
+        // Observe all elements with animation classes
+        document.addEventListener('DOMContentLoaded', function() {
+            // Observe section titles
+            document.querySelectorAll('.section-title').forEach(el => {
+                observer.observe(el);
+            });
+
+            // Observe quote cards
+            document.querySelectorAll('.quote-card').forEach(el => {
+                observer.observe(el);
+            });
+
+            // Observe service cards
+            document.querySelectorAll('.service-card').forEach(el => {
+                observer.observe(el);
+            });
+
+            // Observe blog cards
+            document.querySelectorAll('.blog-card').forEach(el => {
+                observer.observe(el);
+            });
+
+            // Observe office cards
+            document.querySelectorAll('.office-card').forEach(el => {
+                observer.observe(el);
+            });
+
+            // Observe about content
+            document.querySelectorAll('.fade-in-left, .fade-in-right').forEach(el => {
+                observer.observe(el);
+            });
+
+            // Observe other fade-in elements
+            document.querySelectorAll('.fade-in, .scale-in').forEach(el => {
+                observer.observe(el);
+            });
+        });
+
+        // Navbar scroll effect
+        let lastScroll = 0;
+        const nav = document.querySelector('nav');
+        
+        window.addEventListener('scroll', () => {
+            const currentScroll = window.pageYOffset;
+            
+            if (currentScroll > 100) {
+                nav.style.boxShadow = '0 4px 10px rgba(0,0,0,0.2)';
+            } else {
+                nav.style.boxShadow = '0 2px 5px rgba(0,0,0,0.1)';
+            }
+            
+            lastScroll = currentScroll;
+        });
+
+        // Parallax effect for hero section
+        window.addEventListener('scroll', () => {
+            const scrolled = window.pageYOffset;
+            const hero = document.querySelector('.hero');
+            if (hero && scrolled < hero.offsetHeight) {
+                hero.style.transform = `translateY(${scrolled * 0.5}px)`;
+                hero.style.opacity = 1 - (scrolled / hero.offsetHeight) * 0.5;
+            }
+        });
+
+        // Service detail page navigation
+        function showServiceDetail(serviceId) {
+            // Hide all service details
+            document.querySelectorAll('.service-detail').forEach(detail => {
+                detail.classList.remove('active');
+            });
+            
+            // Show selected service detail
+            const serviceDetail = document.getElementById(serviceId);
+            if (serviceDetail) {
+                serviceDetail.classList.add('active');
+                serviceDetail.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            }
+        }
+
+        // Handle service links
+        document.querySelectorAll('a[href^="#"]').forEach(link => {
+            link.addEventListener('click', function(e) {
+                const href = this.getAttribute('href');
+                if (href.startsWith('#') && href !== '#home' && href !== '#about' && href !== '#services' && href !== '#blog' && href !== '#contact' && href !== '#career') {
+                    const serviceId = href.substring(1);
+                    const serviceDetail = document.getElementById(serviceId);
+                    if (serviceDetail && serviceDetail.classList.contains('service-detail')) {
+                        e.preventDefault();
+                        showServiceDetail(serviceId);
+                    }
+                }
+            });
+        });
+
+        // Handle back to services link
+        document.querySelectorAll('.back-to-services').forEach(link => {
+            link.addEventListener('click', function(e) {
+                e.preventDefault();
+                document.querySelectorAll('.service-detail').forEach(detail => {
+                    detail.classList.remove('active');
+                });
+                document.getElementById('services').scrollIntoView({ behavior: 'smooth', block: 'start' });
+            });
+        });
+    </script>
+</body>
+</html>
